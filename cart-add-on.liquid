@@ -1,0 +1,39 @@
+{% comment %}
+  Replace the text below with the handle of your add-on product.
+{% endcomment %}
+
+{% assign product = all_products['put-your-product-handle-here'] %}
+
+{% unless product.empty? %}
+
+  <script>
+  function() {
+
+    var cart = {{ cart | json }},
+        variantToAdd = {{ product.variants.first.id }},
+        alreadyInTheCart = false;
+      
+    for (var i=0; i<Shopify.cart.items.length; i++) {
+      if (Shopify.cart.items[i].id == variantToAdd) {
+        alreadyInTheCart = true;
+      }
+    }
+
+    if (!alreadyInTheCart) {
+      var params = {
+        type: 'POST',
+        url: '/cart/add.js',
+        data: 'quantity=1&id=' + variantToAdd,
+        dataType: 'json',
+        success: function() {
+          window.location.href = '/cart';
+        }
+      };
+      
+      jQuery.ajax(params);
+    }
+
+  }();
+  </script>
+
+{% endunless %}
