@@ -44,7 +44,7 @@ Now you must edit your cart.liquid template to include your new code snippet.
 
 1. Under the **Templates** folder, locate and click on _cart.liquid_ to open it in the online code editor.
 
-2. Copy+paste the below code at the very top of your cart.liquid snippet:
+2. Copy+paste the below code **at the very bottom** of your cart.liquid snippet:
 
    `{% include 'cart-add-on' %}`
    
