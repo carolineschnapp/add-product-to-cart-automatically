@@ -20,7 +20,7 @@ The product handle is shown under 'URL and handle':
 
 In the above example, the handle is `surprise-gift-35-value`. You will need that handle later.
 
-<h2 id="create-snippet">Creating a new code snippet</h2>
+<h2 id="create-snippet">Create a new code snippet</h2>
 
 1. Go to the [Edit HTML/CSS page](https://docs.shopify.com/manual/configuration/store-customization/#template-editor).
 
@@ -38,7 +38,7 @@ In the above example, the handle is `surprise-gift-35-value`. You will need that
 
 6. Click **Save** to save your new code snippet.
 
-<h2 id="include-snippet">Including the new snippet in your cart template</h2>
+<h2 id="include-snippet">Include the new snippet in your cart.liquid template</h2>
 
 Now you must edit your cart.liquid template to include your new code snippet.
 
