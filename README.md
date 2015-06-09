@@ -1,6 +1,6 @@
 # Add a product to the cart automatically
 
-You can set up your cart to automatically include any existing product as a gift product or add-on. The product is added automatically when any other item is added to an empty cart.
+You can set up your cart to automatically include a product as a gift. The product is added automatically when any other item is added to an empty cart.
 
 To add a product to your cart automatically:
 
@@ -20,7 +20,7 @@ The product handle is shown under 'URL and handle':
 
 In the above example, the handle is `surprise-gift-35-value`. You will need that handle later.
 
-~~ <h2 id="create-snippet">Creating a new code snippet</h2>
+<h2 id="create-snippet">Creating a new code snippet</h2>
 
 1. Go to the [Edit HTML/CSS page](https://docs.shopify.com/manual/configuration/store-customization/#template-editor).
 
