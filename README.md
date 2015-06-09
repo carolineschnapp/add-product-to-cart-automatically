@@ -26,15 +26,15 @@ In the above example, the handle is `surprise-gift-35-value`. You will need that
 
 2. Click the **Snippets** folder, then click **Add a new snippet**.
 
-3. Give your snippet the name `cart-add-on` and click **Create snippet**. Your snippet will automatically open in the online code editor.
+3. Give your snippet the name `cart-add-on` and click **Create snippet**. Your new code snippet file will automatically open in the online code editor.
 
-4. Copy the code from this project's snippet.liquid file into your snippet.
+4. Copy the code from this project's cart-add-on.liquid file into your snippet.
 
-5. Look for the following text on line no 5:
+5. Look for the following text:
 
    `put-your-product-handle-here`
 
-   Replace that text with the product handle you grabbed in the first step above.
+   Replace that text with the product handle you grabbed before.
 
 6. Click **Save** to save your new code snippet.
 
