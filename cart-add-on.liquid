@@ -4,36 +4,47 @@
 
 {% assign product = all_products['put-your-product-handle-here'] %}
 
-{% unless product.empty? %}
+{% unless cart.item_count == 0 or product.empty? or product.variants.first.available == false %}
+
+  {% assign variant_id = product.variants.first.id %}
 
   <script>
-  function() {
+  (function($) {
 
-    var cart = {{ cart | json }},
-        variantToAdd = {{ product.variants.first.id }},
-        alreadyInTheCart = false;
-      
-    for (var i=0; i<Shopify.cart.items.length; i++) {
-      if (Shopify.cart.items[i].id == variantToAdd) {
-        alreadyInTheCart = true;
+    var cartItems = {{ cart.items | json }},
+        qtyInTheCart = 0,
+        cartUpdates = {};
+
+    for (var i=0; i<cartItems.length; i++) {
+      if ( cartItems[i].id === {{ variant_id }} ) {
+        qtyInTheCart = cartItems[i].quantity;
+        break;
       }
     }
 
-    if (!alreadyInTheCart) {
-      var params = {
-        type: 'POST',
-        url: '/cart/add.js',
-        data: 'quantity=1&id=' + variantToAdd,
-        dataType: 'json',
-        success: function() {
-          window.location.href = '/cart';
-        }
-      };
-      
-      jQuery.ajax(params);
+    if ( ( cartItems.length === 1 ) && ( qtyInTheCart > 0 ) ) {
+      cartUpdates = { {{ variant_id }}: 0 }
+    }
+    else if ( ( cartItems.length >= 1 ) && ( qtyInTheCart !== 1 ) ) {
+      cartUpdates = { {{ variant_id }}: 1 }
+    }
+    else {
+      return;
     }
 
-  }();
+    var params = {
+      type: 'POST',
+      url: '/cart/update.js',
+      data: { updates: cartUpdates },
+      dataType: 'json',
+      success: function(stuff) { 
+        window.location.href = '/cart';
+      }
+    };
+
+    $.ajax(params);
+
+  })(jQuery);
   </script>
 
 {% endunless %}
